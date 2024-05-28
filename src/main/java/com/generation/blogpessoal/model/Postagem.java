@@ -4,10 +4,13 @@ import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -30,7 +33,11 @@ public class Postagem {
 	
 	@UpdateTimestamp //criando configuração de data igual de uma rede social, no momento que a postagem entrou no banco de dados ele preenche automático
 	private LocalDateTime data;
-
+	
+	@ManyToOne // significa que pode ter muitas postagens para um tema
+	@JsonIgnoreProperties("postagem") //evitar loop infinito
+	private Tema tema; //criando dado como privado, podendo ter acesso apenas pelo getters and setters
+	
 	public Long getId() {
 		return id;
 	}
@@ -62,6 +69,13 @@ public class Postagem {
 	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
-	
+
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
 	
 }

@@ -27,7 +27,7 @@ import jakarta.validation.Valid;
 @CrossOrigin(origins = "*", allowedHeaders = "*") //o origin libera o acesso a outras máquinas, o * indica isso. O allowedHeaders indica alterações no cabeçalho.
 public class PostagemController {
 	
-	@Autowired //injeção de dependencias = instanciar a classe postagemRepository, seria um new do Scanner
+	@Autowired //injeção de dependencias = instanciar a classe postagemRepository, seria um new do Scanner - permite que todos os metodos tenha acesso à Jpa
 	private PostagemRepository postagemRepository;
 	
 	@GetMapping
