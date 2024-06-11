@@ -25,7 +25,7 @@ public class UsuarioService {
 	@Autowired
 	private JwtService jwtService;
 	
-	
+	@Autowired
 	private AuthenticationManager authenticationManager;
 	//classe security tem gestão de autenticação
 	//permite acessar métodos que podem entregar ao objeto autorizações concedidas
